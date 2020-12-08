@@ -13,12 +13,14 @@ import ruang.Balok;
  *
  * @author Aya
 */	
+
 public class Main {
     public static void main(String[] args) {
         GUI g = new GUI();
         
     }
 }
+
 class GUI extends JFrame implements ActionListener {
 
    private JButton btnHitung = new JButton("Hitung");
@@ -98,35 +100,40 @@ class GUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btnHitung) {
-  
-            int panjang, lebar, tinggi;
-            panjang = Integer.parseInt(getFpanjang());
-            lebar = Integer.parseInt(getFlebar());
-            tinggi = Integer.parseInt(getFtinggi()); 
+           try {
+                int panjang, lebar, tinggi;
+                panjang = Integer.parseInt(getFpanjang());
+                lebar = Integer.parseInt(getFlebar());
+                tinggi = Integer.parseInt(getFtinggi()); 
                 
-            PersegiPanjang persegi = new PersegiPanjang(panjang, lebar);
-            Balok balok = new Balok(panjang, lebar, tinggi);
+                PersegiPanjang persegi = new PersegiPanjang(panjang, lebar);
+                Balok balok = new Balok(panjang, lebar, tinggi);
                 
-            add(hasilLuas);
-            add(hasilKeliling);
-            add(hasilVolume);
-            add(hasilLuasPermukaan);
+                add(hasilLuas);
+                add(hasilKeliling);
+                add(hasilVolume);
+                add(hasilLuasPermukaan);
                 
-            String hasilLuas = String.valueOf(persegi.luas());
-            String hasilKeliling = String.valueOf(persegi.keliling());
-            String hasilVolume = String.valueOf(balok.volume());
-            String hasilLuasPermukaan = String.valueOf(balok.luasPermukaan());
+                String hasilLuas = String.valueOf(persegi.luas());
+                String hasilKeliling = String.valueOf(persegi.keliling());
+                String hasilVolume = String.valueOf(balok.volume());
+                String hasilLuasPermukaan = String.valueOf(balok.luasPermukaan());
                 
-            JLabel lluas = new JLabel("Luas Persegi\t : " + hasilLuas);
-            JLabel lkeliling = new JLabel("Keliling Persegi\t : "  + hasilKeliling);
-            JLabel lvolume = new JLabel("Volume Balok\t : " + hasilVolume);
-            JLabel lluasPermukaan = new JLabel("Luas Permukaan Balok\t : " + hasilLuasPermukaan);
+                JLabel lluas = new JLabel("Luas Persegi\t : " + hasilLuas);
+                JLabel lkeliling = new JLabel("Keliling Persegi\t : "  + hasilKeliling);
+                JLabel lvolume = new JLabel("Volume Balok\t : " + hasilVolume);
+                JLabel lluasPermukaan = new JLabel("Luas Permukaan Balok\t : " + hasilLuasPermukaan);
                 
-            lluas.setBounds(40,210,200,20);
-            lkeliling.setBounds(40,240,200,20);
-            lvolume.setBounds(40,270,200,20);
-            lluasPermukaan.setBounds(40,300,200,20);
+                lluas.setBounds(40,210,200,20);
+                lkeliling.setBounds(40,240,200,20);
+                lvolume.setBounds(40,270,200,20);
+                lluasPermukaan.setBounds(40,300,200,20);
 
+           }
+           catch(Exception error) {
+                System.out.println("Erornya adalah = " +error.getMessage());
+           }
+           
         }
         if(e.getSource()==btnReset) {
             fpanjang.setText("");
