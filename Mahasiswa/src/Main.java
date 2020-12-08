@@ -8,44 +8,48 @@
  *
  * @author Aya
  */
-import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class Main {
-    
-    public static void main(String[] args) {
-      
-       char answer;
-       
-       Scanner input = new Scanner(System.in);
-      
-       Mahasiswa mhs = new Mahasiswa();
-       
-       mhs.tulisData();
-       
-       do {
-           
-           System.out.println("\nMenu");
-           System.out.println("1. Lihat Detail Data");
-           System.out.println("2. Edit Data");
-           System.out.print("Choose one : ");
-           int choice = input.nextInt();
-           
-           switch(choice)
-           {
-               case 1:
-               {
-                   mhs.lihatData();
-               }
-               break;
-               case 2:
-               {
-                   mhs.editData();
-               }
-               break;
-           }
-           
-           System.out.print("Want to back menu? (y/n) : ");
-           answer = input.next().charAt(0);
-       } while (answer == 'y');
-    }
+class ButtonHandling extends JFrame
+                     implements ActionListener{
+   private JLabel lbl;
+   private JButton btnSetuju;
+   private JButton btnBatal;
+
+   public ButtonHandling(){
+	super("Coba Button Handling");
+        lbl = new JLabel("Status: None");
+	lbl.setHorizontalAlignment(SwingConstants.CENTER);
+	btnSetuju = new JButton("Setuju");
+	btnBatal = new JButton("Batal");
+	btnSetuju.addActionListener(this);
+	btnBatal.addActionListener(this);
+	setLayout(new BorderLayout());
+	add(lbl,"North");
+	add(btnSetuju,"West");
+	add(btnBatal,"East");
+
+	pack();
+	setResizable(false);
+	setLocation(100,100);
+	setDefaultCloseOperation(3);
+	setVisible(true);
+   }
+
+   public void actionPerformed(ActionEvent e){
+	if(e.getSource()==btnSetuju){
+		lbl.setText("Status : Setuju");
+	}
+	if(e.getSource()==btnBatal){
+		lbl.setText("Status : Batal");
+	}
+   }
+}
+
+public class Main{
+	public static void main(String[] args){
+		new ButtonHandling();
+	}
 }
