@@ -74,7 +74,7 @@ public class ModelDaftar {
         int jmlData = 0;
         try 
         {
-            String query = "Select * from akun WHERE username=" + user + "'"; 
+            String query = "Select * from akun WHERE username=" + user; 
             ResultSet resultSet = statement.executeQuery(query);
             
             while (resultSet.next()){ 
